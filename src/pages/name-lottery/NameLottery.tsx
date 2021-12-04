@@ -65,7 +65,6 @@ const NameLottery = () => {
 
   return (
     <div>
-      <Link to="/">Back to Home</Link>
       <h1>Name Lottery</h1>
       <Form addName={addName} />
       <NameList names={names} />
