@@ -1,11 +1,13 @@
-import {Link} from 'react-router-dom'
+import React from 'react';
 
-const GroupLottery = () => {
+import { Link } from 'react-router-dom';
+
+const GroupLottery = function () {
   return (
     <div>
       <h1>Group Lottery</h1>
     </div>
-  )
-}
+  );
+};
 
-export default GroupLottery
+export default GroupLottery;

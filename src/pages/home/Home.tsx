@@ -1,7 +1,9 @@
-import {Link} from 'react-router-dom'
-import styles from "./Home.module.scss"
+import React from 'react';
 
-const Home = () => {
+import { Link } from 'react-router-dom';
+import styles from './Home.module.scss';
+
+const Home = function () {
   return (
     <div className={styles.home}>
       <h1>RANDOMIZE</h1>
@@ -10,7 +12,7 @@ const Home = () => {
       <Link to="/add-names">Add Names</Link>
       <Link to="/how-it-works">How it works</Link>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

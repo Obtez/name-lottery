@@ -1,12 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../pages/home/Home";
-import GroupLottery from "../pages/group-lottery/GroupLottery";
-import NameLottery from "../pages/name-lottery/NameLottery";
-import NotFound from "../pages/404/NotFound";
-import AddNames from "../pages/add-names/AddNames";
-import Tutorial from "../pages/tutorial/Tutorial";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from '../pages/home/Home';
+import GroupLottery from '../pages/group-lottery/GroupLottery';
+import NameLottery from '../pages/name-lottery/NameLottery';
+import NotFound from '../pages/404/NotFound';
+import AddNames from '../pages/add-names/AddNames';
+import Tutorial from '../pages/tutorial/Tutorial';
 
-const Router = () => {
+const Router = function () {
   return (
     <BrowserRouter>
       <Routes>
@@ -18,7 +19,7 @@ const Router = () => {
         <Route path="/how-it-works" element={<Tutorial />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default Router;
