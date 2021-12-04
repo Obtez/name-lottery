@@ -21,6 +21,10 @@ function GroupLottery() {
     }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('names', JSON.stringify(names));
+  }, [names]);
+
   const deleteName = (id: string): void => {
     const filteredNames = names.filter((n) => n.id !== id);
     setNames(filteredNames);

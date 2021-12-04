@@ -10,7 +10,7 @@ interface IProps {
 
 function NameListItem({ name, deleteName }: IProps) {
   return (
-    <li className={styles.nameListItem}>
+    <li className={styles.nameListItem} onClick={(e) => e.stopPropagation()} aria-hidden="true">
       <span>{name.name}</span>
       <AiOutlineUserDelete onClick={() => deleteName(name.id)} />
     </li>
