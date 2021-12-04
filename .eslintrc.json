@@ -8,12 +8,19 @@
   "rules": {
     "no-unused-expressions": "off"
   },
-  "extends": ["plugin:react/recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "root": true,
   "plugins": ["react", "@typescript-eslint", "jest"],
   "parserOptions": {
     "ecmaVersion": 2021,
+    "project": "./tsconfig.json",
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true

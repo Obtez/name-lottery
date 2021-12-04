@@ -1,4 +1,8 @@
-export const getRandomName = (names: string[]) => {
+const getRandomName = (names: string[]) => {
   const randomNum = Math.floor(Math.random() * names.length);
   return names[randomNum];
+};
+
+export default {
+  getRandomName,
 };

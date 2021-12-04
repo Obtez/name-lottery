@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { useState, useEffect } from 'react';
 import Form from '../../components/form/Form';
 import NameList from '../../components/name-list/NameList';
-import { getRandomName } from './nameLotteryHelper';
+import Helper from './nameLotteryHelper';
 
 import styles from './NameLottery.module.scss';
 
@@ -11,6 +10,8 @@ interface IError {
   isError: boolean;
   message: string;
 }
+
+const { getRandomName } = Helper;
 
 const emptyError = { isError: false, message: '' };
 
@@ -32,7 +33,7 @@ const NameLottery = function () {
   //   localStorage.setItem("names", JSON.stringify(names))
   // }
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     if (names.length === 0) {
       setShowError({
         ...showError,
@@ -45,19 +46,17 @@ const NameLottery = function () {
       setShowError(emptyError);
 
       if (isOnlyUnique) {
-        // do this one
+        // TODO do this one
       }
 
       const name = getRandomName(names);
       setChosenName(name);
-    } else {
-      return null;
     }
   };
 
-  const addName = (name: string) => {
+  const addName = (name: string): void => {
     const sanitizedName = name.trim();
-    if (sanitizedName.length === 0) return null;
+    if (sanitizedName.length === 0) return;
 
     setNames([...names, sanitizedName]);
   };
@@ -79,7 +78,15 @@ const NameLottery = function () {
       </button>
       {showError.isError && <p>{showError.message} </p>}
       <p>{chosenName}</p>
-      <input type="checkbox" onChange={() => setIsOnlyUnique(!isOnlyUnique)} checked={isOnlyUnique} />
+      <label htmlFor="isOnlyUnique">
+        <input
+          type="checkbox"
+          id="isOnlyUnique"
+          onChange={() => setIsOnlyUnique(!isOnlyUnique)}
+          checked={isOnlyUnique}
+        />
+        Only unique names
+      </label>
     </div>
   );
 };

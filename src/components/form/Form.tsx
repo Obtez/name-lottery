@@ -20,8 +20,10 @@ const Form = function ({ addName }: IProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name</label>
-      <input type="text" id="name" name="name" value={name} onChange={handleChange} autoComplete="off" required />
+      <label htmlFor="name">
+        Name
+        <input type="text" id="name" name="name" value={name} onChange={handleChange} autoComplete="off" required />
+      </label>
 
       <input type="submit" value="Add" />
     </form>
