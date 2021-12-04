@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
+import { v4 as uuidv4 } from 'uuid';
 import Form from '../../components/form/Form';
 import NameList from '../../components/name-list/NameList';
 import Helper from './nameLotteryHelper';
-
+import { IName } from '../../types/types';
 import styles from './NameLottery.module.scss';
+import { Link } from 'react-router-dom';
 
 interface IError {
   isError: boolean;
@@ -16,22 +17,26 @@ const { getRandomName } = Helper;
 const emptyError = { isError: false, message: '' };
 
 const NameLottery = function () {
-  const [names, setNames] = useState<string[]>([]);
+  const [names, setNames] = useState<IName[]>([]);
   const [chosenName, setChosenName] = useState<string>('');
   const [prevChosenNames, setPrevChosenNames] = useState<string[]>([]);
   const [isOnlyUnique, setIsOnlyUnique] = useState<boolean>(false);
   const [showError, setShowError] = useState<IError>(emptyError);
 
-  // useEffect(() => {
-  //   const namesInStorage = localStorage.getItem("names")
-  //   if (namesInStorage) {
-  //     setNames(JSON.parse(namesInStorage))
-  //   }
-  // }, [])
+  useEffect(() => {
+    const namesInStorage = localStorage.getItem('names');
+    if (namesInStorage) {
+      setNames(JSON.parse(namesInStorage));
+    }
+  }, []);
 
-  // const saveNamesToLocalStorage = () => {
-  //   localStorage.setItem("names", JSON.stringify(names))
-  // }
+  useEffect(() => {
+    saveNamesToLocalStorage();
+  }, [names]);
+
+  const saveNamesToLocalStorage = () => {
+    localStorage.setItem('names', JSON.stringify(names));
+  };
 
   const handleClick = (): void => {
     if (names.length === 0) {
@@ -50,7 +55,7 @@ const NameLottery = function () {
       }
 
       const name = getRandomName(names);
-      setChosenName(name);
+      setChosenName(name.name);
     }
   };
 
@@ -58,26 +63,46 @@ const NameLottery = function () {
     const sanitizedName = name.trim();
     if (sanitizedName.length === 0) return;
 
-    setNames([...names, sanitizedName]);
+    const nameExists = names.find((n) => n.name === sanitizedName);
+
+    if (nameExists) {
+      setShowError({
+        ...showError,
+        isError: true,
+        message: `${sanitizedName} already exists.`,
+      });
+      return;
+    }
+
+    setNames([
+      ...names,
+      {
+        name: sanitizedName,
+        id: uuidv4(),
+      },
+    ]);
   };
 
-  const clearName = () => {
-    setChosenName('');
+  const deleteName = (id: string): void => {
+    const filteredNames = names.filter((n) => n.id !== id);
+    setNames(filteredNames);
   };
 
   return (
     <div className={styles.nameLottery}>
-      <h1>Name Lottery</h1>
+      <Link to="/">Back to home</Link>
+      <h1>Random Name</h1>
+
       <Form addName={addName} />
-      <NameList names={names} />
-      <button type="button" onClick={handleClick}>
-        Start Lottery
+
+      {chosenName ? <p>{chosenName}</p> : <NameList names={names} deleteName={deleteName} />}
+
+      <button type="button" onClick={handleClick} className={styles.startBtn}>
+        Start
       </button>
-      <button type="button" onClick={clearName}>
-        Clear
-      </button>
+
       {showError.isError && <p>{showError.message} </p>}
-      <p>{chosenName}</p>
+
       <label htmlFor="isOnlyUnique">
         <input
           type="checkbox"

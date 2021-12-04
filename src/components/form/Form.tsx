@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent } from 'react';
+import styles from './Form.module.scss';
 
 interface IProps {
   addName: (name: string) => void;
@@ -19,13 +20,13 @@ const Form = function ({ addName }: IProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <label htmlFor="name">
         Name
         <input type="text" id="name" name="name" value={name} onChange={handleChange} autoComplete="off" required />
       </label>
 
-      <input type="submit" value="Add" />
+      <button type="submit">Add</button>
     </form>
   );
 };
