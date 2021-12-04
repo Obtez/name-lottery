@@ -5,7 +5,7 @@ interface IProps {
   addName: (name: string) => void;
 }
 
-const Form = function ({ addName }: IProps) {
+function Form({ addName }: IProps) {
   const [name, setName] = useState<string>('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +29,6 @@ const Form = function ({ addName }: IProps) {
       <button type="submit">Add</button>
     </form>
   );
-};
+}
 
 export default Form;

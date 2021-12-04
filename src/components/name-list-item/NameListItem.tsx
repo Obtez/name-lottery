@@ -8,11 +8,13 @@ interface IProps {
   deleteName: (id: string) => void;
 }
 
-const NameListItem = ({ name, deleteName }: IProps) => (
-  <li className={styles.nameListItem}>
-    <span>{name.name}</span>
-    <AiOutlineUserDelete onClick={() => deleteName(name.id)} />
-  </li>
-);
+function NameListItem({ name, deleteName }: IProps) {
+  return (
+    <li className={styles.nameListItem}>
+      <span>{name.name}</span>
+      <AiOutlineUserDelete onClick={() => deleteName(name.id)} />
+    </li>
+  );
+}
 
 export default NameListItem;

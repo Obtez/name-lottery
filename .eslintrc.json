@@ -6,7 +6,13 @@
   },
 
   "rules": {
-    "no-unused-expressions": "off"
+    "no-unused-expressions": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "function-declaration"
+      }
+    ]
   },
   "extends": [
     "airbnb",

@@ -7,7 +7,7 @@ import NotFound from '../pages/404/NotFound';
 import AddNames from '../pages/add-names/AddNames';
 import Tutorial from '../pages/tutorial/Tutorial';
 
-const Router = function () {
+function Router() {
   return (
     <BrowserRouter>
       <Routes>
@@ -20,6 +20,6 @@ const Router = function () {
       </Routes>
     </BrowserRouter>
   );
-};
+}
 
 export default Router;

@@ -8,7 +8,7 @@ interface IProps {
   deleteName: (id: string) => void;
 }
 
-const NameList = function ({ names, deleteName }: IProps) {
+function NameList({ names, deleteName }: IProps) {
   return (
     <div className={styles.nameList}>
       <h2>Names</h2>
@@ -21,6 +21,6 @@ const NameList = function ({ names, deleteName }: IProps) {
       </ul>
     </div>
   );
-};
+}
 
 export default NameList;

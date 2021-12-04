@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 import Form from '../../components/form/Form';
 import NameList from '../../components/name-list/NameList';
 import Helper from './nameLotteryHelper';
 import { IName } from '../../types/types';
 import styles from './NameLottery.module.scss';
-import { Link } from 'react-router-dom';
 
 interface IError {
   isError: boolean;
@@ -16,12 +16,16 @@ const { getRandomName } = Helper;
 
 const emptyError = { isError: false, message: '' };
 
-const NameLottery = function () {
+function NameLottery() {
   const [names, setNames] = useState<IName[]>([]);
   const [chosenName, setChosenName] = useState<string>('');
   const [prevChosenNames, setPrevChosenNames] = useState<string[]>([]);
   const [isOnlyUnique, setIsOnlyUnique] = useState<boolean>(false);
   const [showError, setShowError] = useState<IError>(emptyError);
+
+  const saveNamesToLocalStorage = () => {
+    localStorage.setItem('names', JSON.stringify(names));
+  };
 
   useEffect(() => {
     const namesInStorage = localStorage.getItem('names');
@@ -33,10 +37,6 @@ const NameLottery = function () {
   useEffect(() => {
     saveNamesToLocalStorage();
   }, [names]);
-
-  const saveNamesToLocalStorage = () => {
-    localStorage.setItem('names', JSON.stringify(names));
-  };
 
   const handleClick = (): void => {
     if (names.length === 0) {
@@ -114,6 +114,6 @@ const NameLottery = function () {
       </label>
     </div>
   );
-};
+}
 
 export default NameLottery;

@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.scss';
 
-const Home = function () {
+function Home() {
   return (
     <div className={styles.home}>
       <h1>RANDOMIZE</h1>
@@ -13,6 +13,6 @@ const Home = function () {
       <Link to="/how-it-works">How it works</Link>
     </div>
   );
-};
+}
 
 export default Home;
