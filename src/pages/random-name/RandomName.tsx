@@ -7,6 +7,7 @@ import GroupList from '../../components/lists/GroupList';
 import helpers from '../../helpers/groupHelpers';
 import { IName, IGroup } from '../../types/types';
 import NameList from '../../components/lists/NameList';
+import NameRandomizer from '../../components/randomizers/NameRandomizer';
 
 const { addPersonToGroup } = helpers;
 
@@ -86,7 +87,14 @@ function RandomName() {
 
       <TempNameForm submitName={submitName} />
 
-      {isTempGroup ? <NameList people={tempGroup.people} /> : <NameList people={chosenGroup.people} />}
+      {isTempGroup ? (
+        <NameList people={tempGroup.people} />
+      ) : (
+        <div>
+          <NameList people={chosenGroup.people} />
+          <NameRandomizer names={chosenGroup.people} />
+        </div>
+      )}
     </div>
   );
 }
