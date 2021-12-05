@@ -85,10 +85,11 @@ function RandomName() {
         </div>
       )}
 
-      <TempNameForm submitName={submitName} />
-
       {isTempGroup ? (
-        <NameList people={tempGroup.people} />
+        <div>
+          <TempNameForm submitName={submitName} />
+          <NameList people={tempGroup.people} />
+        </div>
       ) : (
         <div>
           <NameList people={chosenGroup.people} />
