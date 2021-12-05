@@ -1,0 +1,61 @@
+@import '../../styles/variables';
+
+.randomName {
+  padding: 2vh 6.25%;
+
+  a {
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-decoration: none;
+
+    div {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      gap: 1%;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  h1 {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  h2 {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  form {
+    label {
+      display: grid;
+      grid-template-columns: max-content auto;
+      align-items: center;
+      gap: 1rem;
+      span {
+        grid-column: 1 / 2;
+      }
+      input {
+        grid-column: 2 / 3;
+      }
+    }
+
+    button[type='submit'] {
+      margin-top: 2rem;
+      padding: 0.75rem 0;
+    }
+  }
+
+  p {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: $alert;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+}

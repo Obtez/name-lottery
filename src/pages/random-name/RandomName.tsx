@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import NameForm from '../../components/forms/NameForm';
 import TempNameForm from '../../components/forms/TempNameForm';
 import GroupList from '../../components/lists/GroupList';
@@ -8,6 +9,7 @@ import helpers from '../../helpers/groupHelpers';
 import { IName, IGroup } from '../../types/types';
 import NameList from '../../components/lists/NameList';
 import NameRandomizer from '../../components/randomizers/NameRandomizer';
+import styles from './RandomName.module.scss';
 
 const { addPersonToGroup } = helpers;
 
@@ -72,8 +74,13 @@ function RandomName() {
   };
 
   return (
-    <div>
-      <Link to="/">Back to home</Link>
+    <div className={styles.randomName}>
+      <Link to="/">
+        <div>
+          <FiArrowLeft />
+          Back to home
+        </div>
+      </Link>
       <h1>Random Name</h1>
 
       {groups.length > 0 ? (
@@ -87,6 +94,7 @@ function RandomName() {
 
       {isTempGroup ? (
         <div>
+          <h2>OR Add Names to a Temporary List</h2>
           <TempNameForm submitName={submitName} />
           <NameList people={tempGroup.people} />
         </div>
