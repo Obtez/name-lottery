@@ -45,11 +45,12 @@ function AddNames({ groupActions }: IProps) {
   };
 
   const deleteNameFromGroup = (nameID: string) => {
-    const newGroups = groups.map((group) => {
-      return group.people.filter((person: IName) => person.id !== nameID);
+    const updatedGroups = groups.map((group: IGroup) => {
+      const newPeople = group.people.filter((person: IName) => person.id !== nameID);
+      return { ...group, people: newPeople };
     });
 
-    setGroups(newGroups);
+    setGroups(updatedGroups);
   };
 
   return (
