@@ -1,0 +1,31 @@
+.groupRandomizer {
+  margin-top: 2rem;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  form {
+    label {
+      display: grid;
+      grid-template-columns: max-content auto;
+      align-items: center;
+      gap: 1rem;
+      span {
+        grid-column: 1 / 2;
+      }
+      input {
+        grid-column: 2 / 3;
+      }
+    }
+
+    button[type='submit'] {
+      margin-top: 2rem;
+      padding: 0.75rem 0;
+    }
+  }
+}
+
+.nameRandomizer {
+}

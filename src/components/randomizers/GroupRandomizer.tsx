@@ -1,5 +1,6 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { IGroup } from '../../types/types';
+import styles from './Randomizer.module.scss';
 
 interface IProps {
   chosenGroup: IGroup;
@@ -36,13 +37,14 @@ function GroupRandomizer({ chosenGroup, updateGroupSize }: IProps) {
   };
 
   return (
-    <div>
+    <div className={styles.groupRandomizer}>
+      <h2>Enter a Group Size</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="groupSize">
           Group Size
           <input type="number" id="groupSize" value={groupSize} onChange={handleChange} required />
         </label>
-        {showError && errorMessage}
+        <p>{showError && errorMessage}</p>
         <button type="submit">START</button>
       </form>
     </div>

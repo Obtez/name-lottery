@@ -1,5 +1,18 @@
+@import '../../styles/variables';
+
 .nameList {
+  padding: 1rem 0;
+  grid-column: 1 / 3;
+  display: flex;
+  flex-flow: row wrap;
+  .nameListInner {
+    display: flex;
+    flex-flow: row wrap;
+  }
 }
 
 .nameItem {
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  background-color: $bg;
 }

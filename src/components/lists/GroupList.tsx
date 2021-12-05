@@ -12,7 +12,7 @@ interface IProps {
 function GroupList({ groups, showNames, chooseGroup }: IProps) {
   return (
     <div className={styles.groupList}>
-      <h2>Your Groups</h2>
+      <h2>Choose a Group</h2>
       {groups.length > 0 ? (
         <ul>
           {groups.map((group: IGroup) => (

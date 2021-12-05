@@ -1,6 +1,7 @@
 import React from 'react';
 import NameItem from './NameItem';
 import { IName } from '../../types/types';
+import styles from './Names.module.scss';
 
 interface IProps {
   people: IName[];
@@ -8,9 +9,9 @@ interface IProps {
 
 function NameList({ people }: IProps) {
   return (
-    <div>
+    <div className={styles.nameList}>
       {people.length > 0 ? (
-        <ul>
+        <ul className={styles.nameListInner}>
           {people.map((person: IName) => (
             <NameItem key={person.id} person={person} />
           ))}
