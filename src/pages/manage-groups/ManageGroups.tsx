@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import GroupForm from '../../components/forms/GroupForm';
 import NameForm from '../../components/forms/NameForm';
 import GroupList from '../../components/lists/GroupList';
@@ -50,6 +51,7 @@ function ManageGroups() {
 
   return (
     <div className={styles.manageGroups}>
+      <Link to="/">Back to home</Link>
       <h1>Your Groups</h1>
 
       <div>
@@ -62,7 +64,7 @@ function ManageGroups() {
         <NameForm groups={groups} submitName={submitName} />
       </div>
 
-      <GroupList groups={groups} />
+      <GroupList groups={groups} deleteGroup={deleteGroup} deleteNameFromGroup={deleteNameFromGroup} />
     </div>
   );
 }
