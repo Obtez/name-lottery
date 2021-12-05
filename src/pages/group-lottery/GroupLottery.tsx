@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext, ChangeEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
-import NameList from '../../components/name-list/NameList';
+import NameList from '../../components/lists/NameList';
 import Helper from './groupLotteryHelper';
 import { IName, IGroup } from '../../types/types';
-import GroupList from '../../components/group-list/GroupList';
+import GroupList from '../../components/lists/GroupList';
 import styles from './GroupLottery.module.scss';
 
 const { getRandomGroups } = Helper;
@@ -36,7 +36,7 @@ function GroupLottery() {
     <div>
       <Link to="/">Back to home</Link>
       <h1>Random Group</h1>
-      <NameList names={names} deleteName={deleteName} />
+      <NameList people={names} />
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="groupSize">

@@ -46,7 +46,7 @@ function App() {
     removeUserFromGroup,
   };
 
-  return <Router groupActions={groupActions} />;
+  return <Router />;
 }
 
 export default App;

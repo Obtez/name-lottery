@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import Form from '../../components/forms/Form';
-import NameList from '../../components/name-list/NameList';
+import NameList from '../../components/lists/NameList';
 import Helper from './nameLotteryHelper';
 import { IName } from '../../types/types';
 import styles from './NameLottery.module.scss';
@@ -95,7 +95,7 @@ function NameLottery() {
 
       <Form addName={addName} />
 
-      {chosenName ? <p>{chosenName}</p> : <NameList names={names} deleteName={deleteName} />}
+      {chosenName ? <p>{chosenName}</p> : <NameList people={names} />}
 
       <button type="button" onClick={handleClick} className={styles.startBtn}>
         Start

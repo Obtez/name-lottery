@@ -9,7 +9,7 @@ function Home() {
       <h1>RANDOMIZE</h1>
       <Link to="/group-lottery">Random Groups</Link>
       <Link to="/name-lottery">Random Name</Link>
-      <Link to="/add-names">Manage Groups</Link>
+      <Link to="/manage-groups">Manage Groups</Link>
       <Link to="/how-it-works">How it works</Link>
     </div>
   );

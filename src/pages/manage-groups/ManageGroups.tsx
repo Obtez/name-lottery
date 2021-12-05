@@ -8,7 +8,7 @@ import styles from './AddNames.module.scss';
 
 const { createGroup, addPersonToGroup } = helpers;
 
-function AddNames() {
+function ManageGroups() {
   const [groups, setGroups] = useState<IGroup[]>([]);
 
   useEffect(() => {
@@ -67,4 +67,4 @@ function AddNames() {
   );
 }
 
-export default AddNames;
+export default ManageGroups;
