@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import GroupForm from '../../components/forms/GroupForm';
 import NameForm from '../../components/forms/NameForm';
-import GroupList from '../../components/lists/GroupList';
+import GroupListAdmin from '../../components/lists/GroupListAdmin';
 import { IName, IGroup } from '../../types/types';
 import helpers from '../../helpers/groupHelpers';
 import styles from './AddNames.module.scss';
@@ -70,7 +70,7 @@ function ManageGroups() {
         <NameForm groups={groups} submitName={submitName} />
       </div>
 
-      <GroupList groups={groups} deleteGroup={deleteGroup} deleteNameFromGroup={deleteNameFromGroup} />
+      <GroupListAdmin groups={groups} deleteGroup={deleteGroup} deleteNameFromGroup={deleteNameFromGroup} />
     </div>
   );
 }

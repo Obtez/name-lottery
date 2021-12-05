@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
-import { AiOutlineUsergroupDelete } from 'react-icons/ai';
-import { IGroup } from '../../types/types';
 import NameList from './NameList';
+import { IGroup } from '../../types/types';
 
 interface IProps {
   group: IGroup;
-  deleteGroup: (id: string) => void;
-  deleteNameFromGroup: (nameID: string) => void;
+  chooseGroup: (groupID: string) => void;
 }
 
-function GroupItem({ group, deleteGroup, deleteNameFromGroup }: IProps) {
+function GroupItem({ group, chooseGroup }: IProps) {
   const [isOpen, setIsOpen] = useState(true);
 
   if (!group) return null;
 
   return (
     <li>
-      <AiOutlineUsergroupDelete onClick={() => deleteGroup(group.id)} />
+      <button type="button" onClick={() => chooseGroup(group.id)}>
+        Choose Group
+      </button>
       <h3>{group.groupName}</h3>
       <button type="button" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? 'Hide Members' : 'Show Members'}
       </button>
-      {isOpen && <NameList key={group.id} people={group.people} deleteNameFromGroup={deleteNameFromGroup} />}
+      {isOpen && <NameList key={group.id} people={group.people} />}
     </li>
   );
 }

@@ -1,26 +1,20 @@
 import React from 'react';
-import { IGroup } from '../../types/types';
 import GroupItem from './GroupItem';
+import { IGroup } from '../../types/types';
 
 interface IProps {
   groups: IGroup[];
-  deleteGroup: (id: string) => void;
-  deleteNameFromGroup: (nameID: string) => void;
+  chooseGroup: (groupID: string) => void;
 }
 
-function GroupList({ groups, deleteGroup, deleteNameFromGroup }: IProps) {
+function GroupList({ groups, chooseGroup }: IProps) {
   return (
     <div>
       <h1>Groups</h1>
       {groups.length > 0 ? (
         <ul>
           {groups.map((group: IGroup) => (
-            <GroupItem
-              key={group.id}
-              group={group}
-              deleteGroup={deleteGroup}
-              deleteNameFromGroup={deleteNameFromGroup}
-            />
+            <GroupItem key={group.id} group={group} chooseGroup={chooseGroup} />
           ))}
         </ul>
       ) : (

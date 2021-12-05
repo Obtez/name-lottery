@@ -1,18 +1,19 @@
 import React from 'react';
-import NameItem from './NameItem';
 import { IName } from '../../types/types';
+import NameItemAdmin from './NameItemAdmin';
 
 interface IProps {
   people: IName[];
+  deleteNameFromGroup: (nameID: string) => void;
 }
 
-function NameList({ people }: IProps) {
+function NameListAdmin({ people, deleteNameFromGroup }: IProps) {
   return (
     <div>
       {people.length > 0 ? (
         <ul>
           {people.map((person: IName) => (
-            <NameItem key={person.id} person={person} />
+            <NameItemAdmin key={person.id} person={person} deleteNameFromGroup={deleteNameFromGroup} />
           ))}
         </ul>
       ) : (
@@ -22,4 +23,4 @@ function NameList({ people }: IProps) {
   );
 }
 
-export default NameList;
+export default NameListAdmin;

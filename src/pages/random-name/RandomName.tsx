@@ -64,32 +64,10 @@ function RandomName() {
     }
   };
 
-  const deleteGroup = (groupID: string) => {
-    const newGroups: IGroup[] = groups.filter((group: IGroup) => group.id !== groupID);
-
-    if (newGroups.length) {
-      setGroups(newGroups);
-    } else {
-      setGroups([]);
-      localStorage.removeItem('groups');
-    }
-  };
-
-  const deleteNameFromGroup = (nameID: string) => {
-    if (!isTempGroup) {
-      const updatedGroups = groups.map((group: IGroup) => {
-        const newPeople = group.people.filter((person: IName) => person.id !== nameID);
-        return { ...group, people: newPeople };
-      });
-
-      setGroups(updatedGroups);
-    } else {
-      const updatedPeopleArray = tempGroup.people.filter((person: IName) => person.id !== nameID);
-      setTempGroup({
-        ...tempGroup,
-        people: [...updatedPeopleArray],
-      });
-    }
+  const chooseGroup = (groupID: string) => {
+    const specificGroup = groups.filter((group: IGroup) => group.id === groupID)[0];
+    setChosenGroup(specificGroup);
+    setIsTempGroup(false);
   };
 
   return (
@@ -98,7 +76,7 @@ function RandomName() {
       <h1>Random Name</h1>
 
       {groups.length > 0 ? (
-        <GroupList groups={groups} deleteGroup={deleteGroup} deleteNameFromGroup={deleteNameFromGroup} />
+        <GroupList groups={groups} chooseGroup={chooseGroup} />
       ) : (
         <div>
           <p>No groups saved.</p>
@@ -108,11 +86,7 @@ function RandomName() {
 
       <TempNameForm submitName={submitName} />
 
-      {isTempGroup ? (
-        <NameList people={tempGroup.people} deleteNameFromGroup={deleteNameFromGroup} />
-      ) : (
-        <NameList people={chosenGroup.people} deleteNameFromGroup={deleteNameFromGroup} />
-      )}
+      {isTempGroup ? <NameList people={tempGroup.people} /> : <NameList people={chosenGroup.people} />}
     </div>
   );
 }
