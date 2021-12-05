@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import GroupList from '../../components/lists/GroupList';
 import NameList from '../../components/lists/NameList';
 import RandomGroupList from '../../components/lists/RandomGroupList';
 import GroupRandomizer from '../../components/randomizers/GroupRandomizer';
 import { IName, IGroup } from '../../types/types';
+import styles from './RandomGroup.module.scss';
 
 const emptyGroup: IGroup = {
   id: '',
@@ -20,7 +22,7 @@ function RandomGroups() {
 
   useEffect(() => {
     const groupsInStorage = localStorage.getItem('groups');
-    if (groupsInStorage) {
+    if (groupsInStorage && groupsInStorage.length > 0) {
       setGroups(JSON.parse(groupsInStorage));
     }
   }, []);
@@ -75,8 +77,13 @@ function RandomGroups() {
   };
 
   return (
-    <div>
-      <Link to="/">Back to home</Link>
+    <div className={styles.randomGroup}>
+      <Link to="/">
+        <div>
+          <FiArrowLeft />
+          Back to home
+        </div>
+      </Link>
       <h1>Random Groups</h1>
       {groups.length > 0 ? (
         <div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import GroupItem from './GroupItem';
 import { IGroup } from '../../types/types';
+import styles from './Groups.module.scss';
 
 interface IProps {
   groups: IGroup[];
@@ -10,8 +11,8 @@ interface IProps {
 
 function GroupList({ groups, showNames, chooseGroup }: IProps) {
   return (
-    <div>
-      <h1>Groups</h1>
+    <div className={styles.groupList}>
+      <h2>Your Groups</h2>
       {groups.length > 0 ? (
         <ul>
           {groups.map((group: IGroup) => (

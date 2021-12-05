@@ -11,7 +11,7 @@ interface IProps {
 function GroupListAdmin({ groups, deleteGroup, deleteNameFromGroup }: IProps) {
   return (
     <div>
-      <h1>Groups</h1>
+      <h2>Groups</h2>
       {groups.length > 0 ? (
         <ul>
           {groups.map((group: IGroup) => (

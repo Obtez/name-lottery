@@ -1,0 +1,27 @@
+@import '../../styles/variables';
+
+.randomGroup {
+  padding: 2vh 6.25%;
+
+  a {
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-decoration: none;
+
+    div {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      gap: 1%;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  h1 {
+    margin: 2rem 0;
+    text-align: center;
+  }
+}

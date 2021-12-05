@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NameList from './NameList';
 import { IGroup } from '../../types/types';
+import styles from './Groups.module.scss';
 
 interface IProps {
   group: IGroup;
@@ -18,12 +19,12 @@ function GroupItem({ group, showNames, chooseGroup }: IProps) {
   if (!group) return null;
 
   return (
-    <li>
-      <button type="button" onClick={() => chooseGroup(group.id)}>
+    <li className={styles.groupItem}>
+      <h3>{group.groupName}</h3>{' '}
+      <button type="button" className="primaryBtn" onClick={() => chooseGroup(group.id)}>
         Choose Group
       </button>
-      <h3>{group.groupName}</h3>
-      <button type="button" onClick={() => setIsOpen(!isOpen)}>
+      <button type="button" className="secondaryBtn" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? 'Hide Members' : 'Show Members'}
       </button>
       {isOpen && <NameList key={group.id} people={group.people} />}
