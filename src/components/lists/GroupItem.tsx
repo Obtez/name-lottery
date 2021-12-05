@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NameList from './NameList';
 import { IGroup } from '../../types/types';
 
 interface IProps {
   group: IGroup;
+  showNames: boolean;
   chooseGroup: (groupID: string) => void;
 }
 
-function GroupItem({ group, chooseGroup }: IProps) {
+function GroupItem({ group, showNames, chooseGroup }: IProps) {
   const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    setIsOpen(showNames);
+  }, []);
 
   if (!group) return null;
 

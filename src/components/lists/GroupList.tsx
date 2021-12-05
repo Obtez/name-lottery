@@ -4,17 +4,18 @@ import { IGroup } from '../../types/types';
 
 interface IProps {
   groups: IGroup[];
+  showNames: boolean;
   chooseGroup: (groupID: string) => void;
 }
 
-function GroupList({ groups, chooseGroup }: IProps) {
+function GroupList({ groups, showNames, chooseGroup }: IProps) {
   return (
     <div>
       <h1>Groups</h1>
       {groups.length > 0 ? (
         <ul>
           {groups.map((group: IGroup) => (
-            <GroupItem key={group.id} group={group} chooseGroup={chooseGroup} />
+            <GroupItem key={group.id} group={group} showNames={showNames} chooseGroup={chooseGroup} />
           ))}
         </ul>
       ) : (

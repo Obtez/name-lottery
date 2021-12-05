@@ -77,7 +77,7 @@ function RandomName() {
       <h1>Random Name</h1>
 
       {groups.length > 0 ? (
-        <GroupList groups={groups} chooseGroup={chooseGroup} />
+        <GroupList groups={groups} showNames={false} chooseGroup={chooseGroup} />
       ) : (
         <div>
           <p>No groups saved.</p>
