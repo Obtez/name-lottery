@@ -7,10 +7,23 @@ function Home() {
   return (
     <div className={styles.home}>
       <h1>RANDOMIZE</h1>
-      <Link to="/random-groups">Random Groups</Link>
-      <Link to="/random-name">Random Name</Link>
-      <Link to="/manage-groups">Manage Groups</Link>
-      <Link to="/how-it-works">How it works</Link>
+      <ul>
+        <Link to="/random-groups">
+          <li>Random Groups</li>
+        </Link>
+
+        <Link to="/random-name">
+          <li>Random Name</li>
+        </Link>
+
+        <Link to="/manage-groups">
+          <li>Manage Groups</li>
+        </Link>
+
+        <Link to="/how-it-works">
+          <li>How it works</li>
+        </Link>
+      </ul>
     </div>
   );
 }
