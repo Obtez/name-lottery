@@ -6,16 +6,21 @@ import NameLottery from '../pages/name-lottery/NameLottery';
 import NotFound from '../pages/404/NotFound';
 import AddNames from '../pages/add-names/AddNames';
 import Tutorial from '../pages/tutorial/Tutorial';
+import { IGroup } from '../types/types';
 
-function Router() {
+interface IProps {
+  groupActions: any;
+}
+
+function Router({ groupActions }: IProps) {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
-        <Route path="/group-lottery" element={<GroupLottery />} />
+        <Route path="/group-lottery" element={<GroupLottery groupActions={groupActions} />} />
         <Route path="/name-lottery" element={<NameLottery />} />
-        <Route path="/add-names" element={<AddNames />} />
+        <Route path="/add-names" element={<AddNames groupActions={groupActions} />} />
         <Route path="/how-it-works" element={<Tutorial />} />
       </Routes>
     </BrowserRouter>

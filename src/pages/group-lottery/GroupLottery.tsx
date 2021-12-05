@@ -1,29 +1,22 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect, useContext, ChangeEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import NameList from '../../components/name-list/NameList';
 import Helper from './groupLotteryHelper';
 import { IName, IGroup } from '../../types/types';
-import styles from './GroupLottery.module.scss';
 import GroupList from '../../components/group-list/GroupList';
+import styles from './GroupLottery.module.scss';
 
 const { getRandomGroups } = Helper;
 
-function GroupLottery() {
+interface IProps {
+  groupActions: any;
+}
+
+function GroupLottery({ groupActions }: IProps) {
   const [names, setNames] = useState<IName[]>([]);
   const [groupSize, setGroupSize] = useState<number>(0);
   const [randomGroups, setRandomGroups] = useState<IGroup[]>([]);
-
-  useEffect(() => {
-    const namesInStorage = localStorage.getItem('names');
-    if (namesInStorage) {
-      setNames(JSON.parse(namesInStorage));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('names', JSON.stringify(names));
-  }, [names]);
 
   const deleteName = (id: string): void => {
     const filteredNames = names.filter((n) => n.id !== id);
@@ -63,7 +56,7 @@ function GroupLottery() {
         <button type="submit">Start</button>
       </form>
 
-      {randomGroups && <GroupList randomGroups={randomGroups} />}
+      {randomGroups && <GroupList groups={randomGroups} groupActions={groupActions} />}
     </div>
   );
 }

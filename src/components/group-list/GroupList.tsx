@@ -3,16 +3,17 @@ import { IGroup } from '../../types/types';
 import GroupListItem from '../group-list-item/GroupListItem';
 
 interface IProps {
-  randomGroups: IGroup[];
+  groups: IGroup[];
+  groupActions: any;
 }
 
-function GroupList({ randomGroups }: IProps) {
+function GroupList({ groups, groupActions }: IProps) {
   return (
     <div>
       <h2>Groups</h2>
       <ul>
-        {randomGroups.map((group) => (
-          <GroupListItem key={group.id} group={group} />
+        {groups.map((group) => (
+          <GroupListItem key={group.id} group={group} groupActions={groupActions} />
         ))}
       </ul>
     </div>

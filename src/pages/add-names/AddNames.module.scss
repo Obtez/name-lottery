@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+
+.manageGroups {
+  display: grid;
+  padding: 0 6.25%;
+
+  h1 {
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  h2 {
+    margin-top: 1.8rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .errorMessage {
+    text-align: center;
+    color: $alert;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
-import Form from '../../components/form/Form';
+import Form from '../../components/forms/Form';
 import NameList from '../../components/name-list/NameList';
 import Helper from './nameLotteryHelper';
 import { IName } from '../../types/types';

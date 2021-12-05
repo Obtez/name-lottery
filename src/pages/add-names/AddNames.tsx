@@ -1,138 +1,72 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import GroupForm from '../../components/forms/GroupForm';
+import NameForm from '../../components/forms/NameForm';
+import GroupList from '../../components/lists/GroupList';
 import { IName, IGroup } from '../../types/types';
+import helpers from '../../helpers/groupHelpers';
+import styles from './AddNames.module.scss';
 
-function AddNames() {
-  const [userName, setUserName] = useState<string>('');
-  const [groupName, setGroupName] = useState<string>('');
+interface IProps {
+  groupActions: any;
+}
+
+const { createGroup, addPersonToGroup } = helpers;
+
+function AddNames({ groupActions }: IProps) {
   const [groups, setGroups] = useState<IGroup[]>([]);
-  const [assignedGroup, setAssignedGroup] = useState<string>('');
-
-  const getGroupNames = () => {
-    return groups.map((group) => group.groupName);
-  };
 
   useEffect(() => {
-    const localGroups = localStorage.getItem('groups');
-    if (localGroups) {
-      setGroups(JSON.parse(localGroups));
-      const initialAssignedGroup = getGroupNames()[0];
-      setAssignedGroup(initialAssignedGroup);
+    const groupsInStorage = localStorage.getItem('groups');
+    if (groupsInStorage) {
+      setGroups(JSON.parse(groupsInStorage));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('groups', JSON.stringify(groups));
+    if (groups.length) {
+      localStorage.setItem('groups', JSON.stringify(groups));
+    }
   }, [groups]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    switch (name) {
-      case 'groupName':
-        setGroupName(value);
-        break;
-
-      case 'userName':
-        setUserName(value);
-        break;
-
-      default:
-        alert('There was an error');
-    }
-  };
-
-  const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-    setAssignedGroup(e.target.value);
-  };
-
-  const handleGroupSubmit = (e: FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-
-    const sanitizedGroupName = groupName.trim();
-
-    if (sanitizedGroupName.length === 0) return;
-
-    const newGroup: IGroup = {
-      id: uuidv4(),
-      groupName: sanitizedGroupName,
-      people: [],
-    };
-
+  const submitGroup = (groupName: string): void => {
+    const newGroup: IGroup = createGroup(groupName);
     setGroups([...groups, newGroup]);
-    setGroupName('');
   };
 
-  const handleUserNameSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const submitName = (name: string, groupID: string) => {
+    const updatedGroups = addPersonToGroup(name, groupID, groups);
+    setGroups(updatedGroups);
+  };
 
-    const sanitizedUserName = userName.trim();
+  const deleteGroup = (groupID: string) => {
+    const newGroups: IGroup[] = groups.filter((group: IGroup) => group.id !== groupID);
+    setGroups(newGroups);
+  };
 
-    if (sanitizedUserName.length === 0) return;
-
-    const newUserName: IName = {
-      id: uuidv4(),
-      name: sanitizedUserName,
-    };
-
+  const deleteNameFromGroup = (nameID: string) => {
     const newGroups = groups.map((group) => {
-      if (group.groupName === assignedGroup) {
-        return {
-          ...group,
-          people: [...group.people, newUserName],
-        };
-      }
-      return group;
+      return group.people.filter((person: IName) => person.id !== nameID);
     });
 
     setGroups(newGroups);
-
-    setUserName('');
-  };
-
-  const deleteName = () => {
-    return null;
-  };
-
-  const deleteGroup = () => {
-    return null;
   };
 
   return (
-    <div>
+    <div className={styles.manageGroups}>
       <h1>Your Groups</h1>
 
       <div>
         <h2>New Group</h2>
-        <form onSubmit={handleGroupSubmit}>
-          <label htmlFor="groupName">
-            Group Name
-            <input type="text" name="groupName" id="groupName" value={groupName} onChange={handleChange} />
-          </label>
-          <button type="submit">Add Group</button>
-        </form>
+        <GroupForm submitGroup={submitGroup} />
       </div>
 
       <div>
         <h2>New Name</h2>
-        <form onSubmit={handleUserNameSubmit}>
-          <label htmlFor="assignedGroup">
-            Assign to Group
-            <select name="assignedGroup" id="assignedGroup" value={assignedGroup} onChange={handleSelect}>
-              {getGroupNames().map((group) => (
-                <option key={group} value={group}>
-                  {group}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label htmlFor="userName">
-            Name
-            <input type="text" name="userName" id="userName" value={userName} onChange={handleChange} />
-          </label>
-          <button type="submit">Add Name</button>
-        </form>
+        <NameForm groups={groups} submitName={submitName} />
       </div>
+
+      <GroupList groups={groups} />
     </div>
   );
 }
