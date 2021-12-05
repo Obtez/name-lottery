@@ -9,11 +9,7 @@ import styles from './GroupLottery.module.scss';
 
 const { getRandomGroups } = Helper;
 
-interface IProps {
-  groupActions: any;
-}
-
-function GroupLottery({ groupActions }: IProps) {
+function GroupLottery() {
   const [names, setNames] = useState<IName[]>([]);
   const [groupSize, setGroupSize] = useState<number>(0);
   const [randomGroups, setRandomGroups] = useState<IGroup[]>([]);
@@ -55,8 +51,6 @@ function GroupLottery({ groupActions }: IProps) {
         </label>
         <button type="submit">Start</button>
       </form>
-
-      {randomGroups && <GroupList groups={randomGroups} groupActions={groupActions} />}
     </div>
   );
 }

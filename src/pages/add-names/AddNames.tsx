@@ -1,5 +1,4 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState, useEffect } from 'react';
 import GroupForm from '../../components/forms/GroupForm';
 import NameForm from '../../components/forms/NameForm';
 import GroupList from '../../components/lists/GroupList';
@@ -7,13 +6,9 @@ import { IName, IGroup } from '../../types/types';
 import helpers from '../../helpers/groupHelpers';
 import styles from './AddNames.module.scss';
 
-interface IProps {
-  groupActions: any;
-}
-
 const { createGroup, addPersonToGroup } = helpers;
 
-function AddNames({ groupActions }: IProps) {
+function AddNames() {
   const [groups, setGroups] = useState<IGroup[]>([]);
 
   useEffect(() => {

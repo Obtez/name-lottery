@@ -18,9 +18,9 @@ function Router({ groupActions }: IProps) {
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
-        <Route path="/group-lottery" element={<GroupLottery groupActions={groupActions} />} />
+        <Route path="/group-lottery" element={<GroupLottery />} />
         <Route path="/name-lottery" element={<NameLottery />} />
-        <Route path="/add-names" element={<AddNames groupActions={groupActions} />} />
+        <Route path="/add-names" element={<AddNames />} />
         <Route path="/how-it-works" element={<Tutorial />} />
       </Routes>
     </BrowserRouter>
