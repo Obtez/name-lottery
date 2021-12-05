@@ -10,7 +10,7 @@ interface IProps {
 }
 
 function GroupItemAdmin({ group, deleteGroup, deleteNameFromGroup }: IProps) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   if (!group) return null;
 
