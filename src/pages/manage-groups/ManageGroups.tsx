@@ -37,7 +37,13 @@ function ManageGroups() {
 
   const deleteGroup = (groupID: string) => {
     const newGroups: IGroup[] = groups.filter((group: IGroup) => group.id !== groupID);
-    setGroups(newGroups);
+
+    if (newGroups.length) {
+      setGroups(newGroups);
+    } else {
+      setGroups([]);
+      localStorage.removeItem('groups');
+    }
   };
 
   const deleteNameFromGroup = (nameID: string) => {
