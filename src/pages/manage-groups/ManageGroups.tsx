@@ -5,7 +5,7 @@ import NameForm from '../../components/forms/NameForm';
 import GroupListAdmin from '../../components/lists/GroupListAdmin';
 import { IName, IGroup } from '../../types/types';
 import helpers from '../../helpers/groupHelpers';
-import styles from './AddNames.module.scss';
+import styles from './ManageGroups.module.scss';
 
 const { createGroup, addPersonToGroup } = helpers;
 
