@@ -26,6 +26,11 @@ function NameForm({ groups, submitName }: IProps) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor="name">
+        Name
+        <input type="text" name="name" id="name" value={name} onChange={handleChange} />
+      </label>
+
       <label htmlFor="assignedGroup">
         Assign to Group
         <select name="assignedGroup" id="assignedGroup" value={assignedGroupID} onChange={handleSelect}>
@@ -36,11 +41,6 @@ function NameForm({ groups, submitName }: IProps) {
             </option>
           ))}
         </select>
-      </label>
-
-      <label htmlFor="name">
-        Name
-        <input type="text" name="name" id="name" value={name} onChange={handleChange} />
       </label>
 
       <button type="submit">Submit</button>

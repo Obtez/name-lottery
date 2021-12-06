@@ -28,6 +28,7 @@ input {
   border: none;
   border-radius: 5px;
   font-size: 1rem;
+  outline: none;
 }
 
 select {
@@ -64,7 +65,7 @@ button[type='button'] {
   background-color: $primary;
 
   &:hover {
-    background-color: $secondary;
+    background-color: $primary-hover;
   }
 }
 

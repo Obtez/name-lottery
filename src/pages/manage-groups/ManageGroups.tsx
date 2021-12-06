@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import GroupForm from '../../components/forms/GroupForm';
 import NameForm from '../../components/forms/NameForm';
 import GroupListAdmin from '../../components/lists/GroupListAdmin';
@@ -57,7 +58,12 @@ function ManageGroups() {
 
   return (
     <div className={styles.manageGroups}>
-      <Link to="/">Back to home</Link>
+      <Link to="/">
+        <div>
+          <FiArrowLeft />
+          Back to home
+        </div>
+      </Link>
       <h1>Your Groups</h1>
 
       <div>
