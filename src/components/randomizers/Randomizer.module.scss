@@ -30,4 +30,20 @@
 }
 
 .nameRandomizer {
+  margin-bottom: 1rem;
+  h2 {
+    background-color: $card-bg;
+    border-radius: 5px;
+    padding: 1rem;
+    font-size: 1.3rem;
+  }
+
+  button {
+    width: 100%;
+    display: block;
+  }
+
+  input {
+    margin-right: 1rem;
+  }
 }

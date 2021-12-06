@@ -96,7 +96,8 @@ function RandomName() {
         <div>
           <h2>OR Add Names to a Temporary List</h2>
           <TempNameForm submitName={submitName} />
-          <NameList variant="default" people={tempGroup.people} />
+          <NameList variant="chosenGroup" people={tempGroup.people} />
+          <NameRandomizer names={tempGroup.people} />
         </div>
       ) : (
         <div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IName } from '../../types/types';
+import styles from './Randomizer.module.scss';
 
 interface IProps {
   names: IName[];
@@ -38,15 +39,15 @@ function NameRandomizer({ names }: IProps) {
   };
 
   return (
-    <div>
+    <div className={styles.nameRandomizer}>
       <h2>{randomName || 'Click START to get a random name'}</h2>
 
       {remainingNames.length ? (
-        <button type="button" onClick={getRandomName}>
+        <button className="primaryBtn" type="button" onClick={getRandomName}>
           START
         </button>
       ) : (
-        <button type="button" onClick={resetNames}>
+        <button className="primaryBtn" type="button" onClick={resetNames}>
           RESET
         </button>
       )}
