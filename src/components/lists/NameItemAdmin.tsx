@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiOutlineUserDelete } from 'react-icons/ai';
 import { IName } from '../../types/types';
+import styles from './Names.module.scss';
 
 interface IProps {
   person: IName;
@@ -13,8 +14,8 @@ function NameItemAdmin({ person, deleteNameFromGroup }: IProps) {
   };
 
   return (
-    <li>
-      <AiOutlineUserDelete onClick={handleClick} />
+    <li className={styles.nameItemAdmin}>
+      <AiOutlineUserDelete className={styles.deleteIcon} onClick={handleClick} />
       <span>{person.name}</span>
     </li>
   );

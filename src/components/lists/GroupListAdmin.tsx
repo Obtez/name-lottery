@@ -1,6 +1,7 @@
 import React from 'react';
 import { IGroup } from '../../types/types';
 import GroupItemAdmin from './GroupItemAdmin';
+import styles from './Groups.module.scss';
 
 interface IProps {
   groups: IGroup[];
@@ -10,7 +11,7 @@ interface IProps {
 
 function GroupListAdmin({ groups, deleteGroup, deleteNameFromGroup }: IProps) {
   return (
-    <div>
+    <div className={styles.groupListAdmin}>
       <h2>Groups</h2>
       {groups.length > 0 ? (
         <ul>

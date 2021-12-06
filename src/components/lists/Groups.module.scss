@@ -74,3 +74,49 @@
     }
   }
 }
+
+.groupListAdmin {
+  margin-bottom: 2rem;
+
+  h2 {
+    text-align: center;
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.5rem;
+  }
+}
+
+.groupItemAdmin {
+  background-color: $card-bg;
+  padding: 1rem;
+  border-radius: 6px;
+
+  .groupHeader {
+    display: flex;
+    gap: 1rem;
+
+    .deleteIcon {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: $alert;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+
+    h3 {
+      align-self: center;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+}
