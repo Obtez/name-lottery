@@ -47,3 +47,22 @@
     margin-right: 1rem;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .groupRandomizer {
+    form {
+      display: flex;
+      flex-direction: row nowrap;
+      align-items: center;
+      label {
+        input {
+          width: 50px;
+        }
+      }
+
+      button {
+        width: 200px;
+      }
+    }
+  }
+}
