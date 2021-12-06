@@ -120,3 +120,23 @@
     width: 100%;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .groupList {
+    &__default {
+      h2 {
+        margin-bottom: 1rem;
+      }
+      ul {
+        gap: 1rem;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .groupItem {
+    &__default {
+      width: calc(100% / 2 - 1rem);
+    }
+  }
+}

@@ -86,7 +86,7 @@ function RandomGroups() {
       </Link>
       <h1>Random Groups</h1>
       {groups.length > 0 ? (
-        <div>
+        <div className={styles.groupSelectionArea}>
           <GroupList variant="default" groups={groups} showNames={false} chooseGroup={chooseGroup} />
           <GroupRandomizer chosenGroup={chosenGroup} updateGroupSize={updateGroupSize} />
           {randomGroups.length ? (
