@@ -84,7 +84,7 @@ function RandomName() {
       <h1>Random Name</h1>
 
       {groups.length > 0 ? (
-        <GroupList groups={groups} showNames={false} chooseGroup={chooseGroup} />
+        <GroupList variant="default" groups={groups} showNames={false} chooseGroup={chooseGroup} />
       ) : (
         <div>
           <p>No groups saved.</p>
@@ -96,11 +96,11 @@ function RandomName() {
         <div>
           <h2>OR Add Names to a Temporary List</h2>
           <TempNameForm submitName={submitName} />
-          <NameList people={tempGroup.people} />
+          <NameList variant="default" people={tempGroup.people} />
         </div>
       ) : (
         <div>
-          <NameList people={chosenGroup.people} />
+          <NameList variant="chosenGroup" people={chosenGroup.people} />
           <NameRandomizer names={chosenGroup.people} />
         </div>
       )}

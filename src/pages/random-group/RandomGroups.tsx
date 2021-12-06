@@ -87,9 +87,13 @@ function RandomGroups() {
       <h1>Random Groups</h1>
       {groups.length > 0 ? (
         <div>
-          <GroupList groups={groups} showNames={false} chooseGroup={chooseGroup} />
+          <GroupList variant="default" groups={groups} showNames={false} chooseGroup={chooseGroup} />
           <GroupRandomizer chosenGroup={chosenGroup} updateGroupSize={updateGroupSize} />
-          {randomGroups.length ? <RandomGroupList groups={randomGroups} /> : <NameList people={chosenGroup.people} />}
+          {randomGroups.length ? (
+            <RandomGroupList groups={randomGroups} />
+          ) : (
+            <NameList variant="chosenGroup" people={chosenGroup.people} />
+          )}
         </div>
       ) : (
         <div>

@@ -11,12 +11,12 @@ function RandomGroupList({ groups }: IProps) {
   return (
     <div className={styles.randomGroups}>
       {groups.length ? (
-        <ul>
+        <ul className={styles.randomGroupsList}>
           {groups.map((group: IName[], index: number) => {
             return (
-              <li className={styles.groupContainer} key={uuidv4()}>
+              <li className={styles.groupCard} key={uuidv4()}>
                 <h2>Group {index + 1}</h2>
-                <ul>
+                <ul className={styles.groupMemberList}>
                   {group.map((person) => (
                     <li key={person.id}>{person.name}</li>
                   ))}

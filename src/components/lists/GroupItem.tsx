@@ -4,12 +4,13 @@ import { IGroup } from '../../types/types';
 import styles from './Groups.module.scss';
 
 interface IProps {
+  variant: string;
   group: IGroup;
   showNames: boolean;
   chooseGroup: (groupID: string) => void;
 }
 
-function GroupItem({ group, showNames, chooseGroup }: IProps) {
+function GroupItem({ variant, group, showNames, chooseGroup }: IProps) {
   const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
@@ -19,15 +20,17 @@ function GroupItem({ group, showNames, chooseGroup }: IProps) {
   if (!group) return null;
 
   return (
-    <li className={styles.groupItem}>
-      <h3>{group.groupName}</h3>{' '}
-      <button type="button" className="primaryBtn" onClick={() => chooseGroup(group.id)}>
-        Choose Group
-      </button>
-      <button type="button" className="secondaryBtn" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? 'Hide Members' : 'Show Members'}
-      </button>
-      {isOpen && <NameList key={group.id} people={group.people} />}
+    <li className={styles[`groupItem__${variant}`]}>
+      <h3>{group.groupName}</h3>
+      <div>
+        <button type="button" className="primaryBtn" onClick={() => chooseGroup(group.id)}>
+          Choose Group
+        </button>
+        <button type="button" className="secondaryBtn" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? 'Hide Members' : 'Show Members'}
+        </button>
+      </div>
+      {isOpen && <NameList variant={variant} key={group.id} people={group.people} />}
     </li>
   );
 }
